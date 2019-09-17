@@ -10,3 +10,4 @@ puts hand(draw)
 else
 puts "Can't draw more than what's in the deck!"
 end
+
