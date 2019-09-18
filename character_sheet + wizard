@@ -86,19 +86,17 @@ def wizard_wizard
   puts "We’ll now draw your cards for you."
   #unfinished code here, will return to it
   #a = majorpull(1)
-  
-  @playermajor = "The Fool"
-  w = hand(1)
-  @playerwands = w
-  c = hand(1)
-  @playercups = c
-  s = hand(1)
-  @playerswords = s
-  p = hand(1)
-  @playerpentas = p
 
-  c1 = Character.new(@playername, @playermajor, @playereyes, @playerdress, @playerhands, @playerwands, @playercups, @playerpenta, @playerswords)
-  #now getting an undefined local variable or method `"\u201D"' for main:Object
-  puts “Meet your new character!”
-  c1.display
+  @playermajor = "The Fool"
+  w = rand(1..11)
+  @playerwands = w
+  c = rand(1..11)
+  @playercups = c
+  s = rand(1..11)
+  @playerswords = s
+  p = rand(1..11)
+  @playerpentas = p
+  @c1 = Character.new(@playername, @playermajor, @playerpentas, @playerwands, @playerswords, @playercups, @playereyes, @playerdress, @playerhands)
+  puts "Meet your new character!"
+  @c1.display
 end
