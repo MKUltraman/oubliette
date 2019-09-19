@@ -43,46 +43,45 @@ class Character
 		end
 	end
 	def shock
-		if (2..4).include?(@pentacles)
+		if (2..4).include?(@cups)
 			puts hand(1)
-		elsif (5..8).include?(@pentacles)
+		elsif (5..8).include?(@cups)
 			puts hand(2)
-		elsif (9..11).include?(@pentacles)
+		elsif (9..11).include?(@cups)
 			puts hand(3)
 		end
   end
 	def commune
-	  if (2..4).include?(@wands)
+	  if (2..4).include?(@swords)
 			puts hand(1)
-		elsif (5..8).include?(@wands)
+		elsif (5..8).include?(@swords)
 			puts hand(2)
-		elsif (9..11).include?(@wands)
+		elsif (9..11).include?(@swords)
 			puts hand(3)
 		end
   end
-	def display 
+	def display
 		puts "My name is #{@name}, I bear the #{@major_arcana}.  I have #{@eyes} eyes, #{@dress} clothes, and #{@hands} hands.  My stats are #{@pentacles} of Pentacles, #{@wands} of Wands, #{@swords} of Swords, and #{@cups} of Cups."
   end
 	def move
 		puts "What move do you want to take?  Burn and Brand, Commune with the Beyond, Tools of the Trade, or Shock and Awe?"
 		input = gets.chomp.downcase
-		if ["burn", "burn and brand"].include?(input) 
+		if ["burn", "burn and brand"].include?(input)
 			puts burn
-		elsif ["shock", "shock and awe"].include?(input) 
+		elsif ["shock", "shock and awe"].include?(input)
 			puts shock
-		elsif ["commune", "commune with the beyond"].include?(input) 
+		elsif ["commune", "commune with the beyond"].include?(input)
 			puts commune
-		elsif ["tools", "tools of the trade"].include?(input) 
+		elsif ["tools", "tools of the trade"].include?(input)
 			puts tools
-		else 
+		else
 			puts "Sorry, that didn't make any sense to me.  Care to try again?"
 			puts move
-    puts move
     end
   end
 end
 #this generates your character for Wizard World
-def wizard_wizard 
+def wizard_wizard
   puts "What is your name?"
   @playername = gets.chomp
   puts "Give an adjective for how your eyes look."
@@ -91,7 +90,7 @@ def wizard_wizard
   @playerdress = gets.chomp
   puts "Give an adjective for how your hands look."
   @playerhands = gets.chomp
-  puts "We’ll now draw your cards for you."
+  puts "Weï¿½ll now draw your cards for you."
   @playermajor = majorpull
   w = rand(1..11)
   @playerwands = w
