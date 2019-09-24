@@ -7,7 +7,7 @@ $major_arcana = ["The Fool", "The Magician", "The High Priestess", "The Empress"
 def majorpull()
   $major_arcana.sample(1)
 end
-
+wizzes = Hash.new
 #this defines our character!
 class Character
 	def initialize(name, major_arcana, pentacles, wands, swords, cups, eyes, dress, hands)
@@ -77,9 +77,24 @@ class Character
 		else
 			puts "Sorry, that didn't make any sense to me.  Care to try again?"
 			puts move
-    end
+	end
+	mainmenu
   end
 end
+def mainmenu 
+	puts "Do you want to make a move, display your current character, or generate a new character?"
+	choice = gets.chomp
+		if ["make a move", "move"].include?(choice)
+		puts @file_id.move
+		elsif ["display", "display my character"].include?(choice)
+		puts @file_id.display
+		elsif ["generate", "generate a new character"].include?(choice)
+		puts wizard_wizard
+		else
+		puts "Not sure what you meant.  Try again!"
+		puts mainmenu
+		end
+	end
 #this generates your character for Wizard World
 def wizard_wizard
   puts "What is your name?"
@@ -90,7 +105,7 @@ def wizard_wizard
   @playerdress = gets.chomp
   puts "Give an adjective for how your hands look."
   @playerhands = gets.chomp
-  puts "We�ll now draw your cards for you."
+  puts "We'll now draw your cards for you."
   @playermajor = majorpull
   w = rand(1..11)
   @playerwands = w
@@ -100,10 +115,29 @@ def wizard_wizard
   @playerswords = s
   p = rand(1..11)
   @playerpentas = p
-  @my_mage = Character.new(@playername, @playermajor, @playerpentas, @playerwands, @playerswords, @playercups, @playereyes, @playerdress, @playerhands)
+puts "Name the file we'll save your character to!"
+  @file_id = gets.chomp.to_i
+  @file_id = Character.new(@playername, @playermajor, @playerpentas, @playerwands, @playerswords, @playercups, @playereyes, @playerdress, @playerhands)
   puts "Meet your new character!"
-  @my_mage.display
+  @file_id.display
+  @file_id.move
+  mainmenu
+  wizzes["@playername"] = @file_id
 end
 wizard_wizard
-@my_mage.move
-puts "At any time, type @my_mage.move to take action with your character!  Type @my_mage.display to look at your character again."
+
+def mainmenu 
+	puts "Do you want to make a move, display your current character, or generate a new character?"
+	choice = gets.chomp
+		if ["make a move", "move"].include?(choice)
+		puts @file_id.move
+		elsif ["display", "display my character"].include?(choice)
+		puts @file_id.display
+		elsif ["generate", "generate a new character"].include?(choice)
+		puts wizard_wizard
+		else
+		puts "Not sure what you meant.  Try again!"
+		puts mainmenu
+		end
+	end
+puts mainmenu
