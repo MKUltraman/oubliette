@@ -7,7 +7,7 @@ $major_arcana = ["The Fool", "The Magician", "The High Priestess", "The Empress"
 def majorpull()
   $major_arcana.sample(1)
 end
-wizzes = Hash.new
+$wizzes = Hash.new
 #this defines our character!
 class Character
 	def initialize(name, major_arcana, pentacles, wands, swords, cups, eyes, dress, hands)
@@ -85,9 +85,9 @@ def mainmenu
 	puts "Do you want to make a move, display your current character, or generate a new character?"
 	choice = gets.chomp
 		if ["make a move", "move"].include?(choice)
-		puts @file_id.move
+		puts $file_id.move
 		elsif ["display", "display my character"].include?(choice)
-		puts @file_id.display
+		puts $file_id.display
 		elsif ["generate", "generate a new character"].include?(choice)
 		puts wizard_wizard
 		else
@@ -116,13 +116,12 @@ def wizard_wizard
   p = rand(1..11)
   @playerpentas = p
 puts "Name the file we'll save your character to!"
-  @file_id = gets.chomp.to_i
-  @file_id = Character.new(@playername, @playermajor, @playerpentas, @playerwands, @playerswords, @playercups, @playereyes, @playerdress, @playerhands)
+  $file_id = gets.chomp.to_i
+  $file_id = Character.new(@playername, @playermajor, @playerpentas, @playerwands, @playerswords, @playercups, @playereyes, @playerdress, @playerhands)
   puts "Meet your new character!"
-  @file_id.display
-  @file_id.move
+  $file_id.display
   mainmenu
-  wizzes["@playername"] = @file_id
+  $wizzes["@playername"] = @file_id
 end
 wizard_wizard
 
@@ -130,9 +129,9 @@ def mainmenu
 	puts "Do you want to make a move, display your current character, or generate a new character?"
 	choice = gets.chomp
 		if ["make a move", "move"].include?(choice)
-		puts @file_id.move
+		puts $file_id.move
 		elsif ["display", "display my character"].include?(choice)
-		puts @file_id.display
+		puts $file_id.display
 		elsif ["generate", "generate a new character"].include?(choice)
 		puts wizard_wizard
 		else
@@ -140,4 +139,4 @@ def mainmenu
 		puts mainmenu
 		end
 	end
-puts mainmenu
+mainmenu
